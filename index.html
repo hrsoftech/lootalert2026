@@ -1,144 +1,217 @@
-<style>
-/* Responsive Reset for Blogger */
-.loot-landing-wrapper {
-    margin: 0;
-    padding: 20px 10px;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #0f172a;
-    color: #f8fafc;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LootAlert2026 Landing Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Inter:wght@400;600;800&display=swap');
 
-.loot-container {
-    width: 100%;
-    max-width: 600px; /* Mobile friendly width */
-    text-align: center;
-}
+        /* Main Wrapper & Background */
+        .loot-landing-wrapper {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
 
-.loot-header {
-    margin-bottom: 30px;
-}
+        .loot-container {
+            width: 100%;
+            max-width: 550px;
+            padding: 20px;
+            text-align: center;
+        }
 
-.loot-badge {
-    background-color: #ef4444;
-    color: white;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 14px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
+        /* 💥 PULSING BADGE EFFECT */
+        @keyframes badgePulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
 
-.loot-title {
-    color: #fbbf24 !important;
-    font-size: 36px !important;
-    margin: 0 0 10px 0 !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 800;
-}
+        .loot-badge {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: badgePulse 2s infinite;
+        }
 
-.loot-subtitle {
-    font-size: 18px;
-    color: #94a3b8;
-}
+        .loot-title {
+            font-family: 'Changa', sans-serif;
+            background: linear-gradient(to bottom, #fbbf24 30%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 42px;
+            line-height: 1;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
 
-.loot-main-card {
-    background: #1e293b;
-    border: 2px solid #334155;
-    border-radius: 24px;
-    padding: 30px;
-    margin-top: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+        .loot-subtitle {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
 
-.loot-price-section {
-    margin: 20px 0;
-}
+        .loot-main-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 28px;
+            padding: 35px 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
 
-.loot-big-price {
-    font-size: 56px;
-    color: #4ade80;
-    font-weight: 800;
-    display: block;
-}
+        .loot-price-label {
+            font-size: 16px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
 
-.loot-strike {
-    text-decoration: line-through;
-    color: #64748b;
-    font-size: 24px;
-    margin-right: 10px;
-}
+        .loot-big-price {
+            font-size: 72px;
+            color: #4ade80;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+        }
 
-.loot-features {
-    text-align: left;
-    margin: 30px auto;
-    width: 90%;
-}
+        .loot-strike {
+            text-decoration: line-through;
+            color: #64748b;
+            font-size: 28px;
+            margin-right: 15px;
+        }
 
-.loot-feature {
-    margin-bottom: 15px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
+        .loot-features {
+            text-align: left;
+            margin: 30px auto;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            box-sizing: border-box;
+        }
 
-.loot-cta-button {
-    display: block;
-    background: #fbbf24;
-    color: #000 !important;
-    text-decoration: none !important;
-    padding: 20px;
-    border-radius: 15px;
-    font-size: 22px;
-    font-weight: 800;
-    margin-top: 25px;
-    transition: 0.3s;
-}
+        .loot-feature {
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
 
-.loot-cta-button:hover {
-    background: #f59e0b;
-    transform: scale(1.02);
-}
+        .loot-timer-container {
+            margin: 20px 0;
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+        }
 
-.loot-footer {
-    margin-top: 40px;
-    font-size: 12px;
-    color: #475569;
-    line-height: 1.6;
-}
-</style>
+        .loot-timer-display {
+            font-family: monospace;
+            font-size: 32px;
+            color: #f8fafc;
+            background: #0f172a;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #475569;
+        }
 
-<div class="loot-landing-wrapper">
-    <div class="loot-container">
-        <div class="loot-header">
-            <div class="loot-badge">LIVE: 2026 PRICE ERRORS</div>
-            <h1 class="loot-title">ACCESS GRANTED</h1>
-            <div class="loot-subtitle">Welcome to the <strong>LootAlert2026</strong> Private Portal</div>
-        </div>
+        @keyframes buttonGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.8); }
+        }
 
-        <div class="loot-main-card">
-            <div class="loot-price-section">
-                <span style="font-size: 16px; color: #94a3b8; display: block; margin-bottom: 10px;">TODAY'S TOP VERIFIED LOOT</span>
-                <span class="loot-big-price"><span class="loot-strike">₹999</span> ₹1</span>
+        .loot-cta-button {
+            display: block;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #000;
+            text-decoration: none;
+            padding: 25px;
+            border-radius: 18px;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            animation: buttonGlow 2s infinite;
+        }
+
+        .loot-footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <div class="loot-landing-wrapper">
+        <div class="loot-container">
+            <div class="loot-header">
+                <div class="loot-badge">LIVE: 2026 PRICE ERRORS</div>
+                <h1 class="loot-title">ACCESS GRANTED</h1>
+                <div class="loot-subtitle">Welcome to the <strong>LootAlert2026</strong> Private Portal</div>
             </div>
-            
-            <div class="loot-features">
-                <span class="loot-feature">🚀 <strong>&nbsp;Instant Alerts:</strong> Seconds after drops go live.</span>
-                <span class="loot-feature">🛡️ <strong>&nbsp;Verified Only:</strong> Hand-picked, zero spam.</span>
-                <span class="loot-feature">💰 <strong>&nbsp;Hidden Coupons:</strong> Secret Amazon/Flipkart codes.</span>
+
+            <div class="loot-main-card">
+                <div class="loot-price-section">
+                    <span class="loot-price-label">Today's BAAP Deal</span>
+                    <span class="loot-big-price"><span class="loot-strike">₹999</span> ₹1*</span>
+                </div>
+                
+                <div class="loot-features">
+                    <div class="loot-feature">🚀 &nbsp;<strong>Instant Alerts:</strong> Seconds after loots go live.</div>
+                    <div class="loot-feature">🛡️ &nbsp;<strong>Verified Only:</strong> 100% real drops, zero spam.</div>
+                    <div class="loot-feature">💰 &nbsp;<strong>Hidden Coupons:</strong> Secret Amazon/Flipkart codes.</div>
+                </div>
+
+                <div class="loot-timer-container">
+                    <span style="color: #ef4444; font-weight: 800; display: block; margin-bottom: 10px;">NEXT LOOT DROPPING IN:</span>
+                    <div class="loot-timer-display" id="timer">24:59</div>
+                </div>
+
+                <a href="https://t.me/lootalert2026" class="loot-cta-button">JOIN TELEGRAM NOW</a>
+                <p style="color: #94a3b8; margin-top: 20px;">Join 50,000+ smart shoppers in India!</p>
             </div>
 
-            <a href="https://t.me/lootalert2026" class="loot-cta-button">JOIN TELEGRAM NOW</a>
-            <p style="margin-top: 20px; color: #94a3b8; font-size: 14px;">Join 50,000+ smart shoppers in India!</p>
-        </div>
-
-        <div class="loot-footer">
-            <p>As an Amazon Associate, I earn from qualifying purchases.</p>
-            <p>© 2026 LootAlert2026 • India's Fastest Deal Network</p>
+            <div class="loot-footer">
+                <p>*₹1 price illustrative. Affiliate Disclosure: As an Amazon Associate, I earn from qualifying purchases.</p>
+                <p>© 2026 LootAlert2026 • India's Fastest Deal Network</p>
+            </div>
         </div>
     </div>
-</div>
+
+    <script>
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                if (--timer < 0) { timer = duration; }
+            }, 1000);
+        }
+        window.onload = function () {
+            var duration = 60 * 24 + 59;
+            var display = document.querySelector('#timer');
+            startTimer(duration, display);
+        };
+    </script>
+</body>
+</html>
