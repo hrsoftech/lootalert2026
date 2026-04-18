@@ -2,200 +2,241 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LootAlert2026 Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LootAlert2026 | Private Access</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Changa:wght@600;800&family=Inter:wght@400;600;800&display=swap');
 
-        /* Main Wrapper & Background */
-        .loot-landing-wrapper {
+        :root {
+            --primary: #fbbf24;
+            --accent: #ef4444;
+            --success: #4ade80;
+            --bg: #0f172a;
+        }
+
+        body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            background-color: var(--bg);
             color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 🌌 Animated Background */
+        .loot-landing-wrapper {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
             box-sizing: border-box;
         }
 
         .loot-container {
             width: 100%;
-            max-width: 550px;
-            padding: 20px;
+            max-width: 500px;
             text-align: center;
+            z-index: 10;
         }
 
-        /* 💥 PULSING BADGE EFFECT */
-        @keyframes badgePulse {
-            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        /* ⚡ Visitor Counter */
+        .visitor-count {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.05);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* 💥 Pulsing Badge */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
         .loot-badge {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 10px 25px;
+            background: linear-gradient(135deg, var(--accent) 0%, #b91c1c 100%);
+            padding: 8px 20px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
             display: inline-block;
-            margin-bottom: 20px;
-            animation: badgePulse 2s infinite;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
         }
 
         .loot-title {
             font-family: 'Changa', sans-serif;
-            background: linear-gradient(to bottom, #fbbf24 30%, #f59e0b 100%);
+            font-size: 48px;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff 20%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 42px;
-            line-height: 1;
-            margin: 0 0 8px 0;
             text-transform: uppercase;
-            font-weight: 800;
+            line-height: 0.9;
         }
 
-        .loot-subtitle {
-            font-size: 18px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-
+        /* 🃏 Glassmorphism Card */
         .loot-main-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 28px;
-            padding: 35px 25px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-        }
-
-        .loot-price-label {
-            font-size: 16px;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: block;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 40px 25px;
+            margin-top: 25px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .loot-big-price {
-            font-size: 72px;
-            color: #4ade80;
+            font-size: 80px;
+            color: var(--success);
             font-weight: 800;
-            display: block;
             line-height: 1;
+            margin: 10px 0;
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
         }
 
         .loot-strike {
             text-decoration: line-through;
             color: #64748b;
-            font-size: 28px;
-            margin-right: 15px;
+            font-size: 24px;
+            vertical-align: middle;
         }
 
+        /* ✅ Features List */
         .loot-features {
             text-align: left;
-            margin: 30px auto;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.6);
+            margin: 25px 0;
+            background: rgba(15, 23, 42, 0.4);
             padding: 20px;
-            border-radius: 16px;
-            border: 1px solid #334155;
-            box-sizing: border-box;
+            border-radius: 20px;
         }
 
         .loot-feature {
-            margin-bottom: 15px;
-            font-size: 16px;
             display: flex;
             align-items: center;
+            margin-bottom: 12px;
+            font-size: 15px;
         }
 
-        .loot-timer-container {
-            margin: 20px 0;
-            border-top: 1px solid #334155;
-            padding-top: 20px;
-        }
-
-        .loot-timer-display {
-            font-family: monospace;
-            font-size: 32px;
-            color: #f8fafc;
+        /* 🕒 Timer */
+        .timer-box {
             background: #0f172a;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid #475569;
+            border: 1px solid var(--accent);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
         }
 
-        @keyframes buttonGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.8); }
+        #timer {
+            font-family: monospace;
+            font-size: 36px;
+            color: var(--accent);
+            font-weight: bold;
         }
 
+        /* 🚀 CTA Button */
         .loot-cta-button {
             display: block;
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #f59e0b 100%);
             color: #000;
             text-decoration: none;
-            padding: 25px;
-            border-radius: 18px;
-            font-size: 24px;
+            padding: 22px;
+            border-radius: 20px;
+            font-size: 22px;
             font-weight: 800;
             text-transform: uppercase;
-            animation: buttonGlow 2s infinite;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
         }
 
+        .loot-cta-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.5);
+        }
+
+        /* 📢 Social Proof Toast */
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(150%);
+            transition: 0.5s ease;
+            z-index: 100;
+        }
+
+        .toast-active { transform: translateY(0) !important; }
+
         .loot-footer {
-            margin-top: 40px;
-            font-size: 12px;
+            margin-top: 30px;
+            font-size: 11px;
             color: #475569;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
+
+    <div id="toast">🔥 <span id="toast-text">Loading alerts...</span></div>
+
     <div class="loot-landing-wrapper">
         <div class="loot-container">
+            
+            <div class="visitor-count">👀 <span id="viewers">142</span> people viewing this deal</div>
+
             <div class="loot-header">
                 <div class="loot-badge">LIVE: 2026 PRICE ERRORS</div>
-                <h1 class="loot-title">ACCESS GRANTED</h1>
-                <div class="loot-subtitle">Welcome to the <strong>LootAlert2026</strong> Private Portal</div>
+                <h1 class="loot-title">ACCESS<br>GRANTED</h1>
             </div>
 
             <div class="loot-main-card">
-                <div class="loot-price-section">
-                    <span class="loot-price-label">Today's BAAP Deal</span>
-                    <span class="loot-big-price"><span class="loot-strike">₹999</span> ₹1*</span>
+                <span style="color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; font-weight: 600;">Today's Verified Loot</span>
+                <div class="loot-big-price">
+                    <span class="loot-strike">₹999</span> ₹1*
                 </div>
                 
                 <div class="loot-features">
-                    <div class="loot-feature">🚀 &nbsp;<strong>Instant Alerts:</strong> Seconds after loots go live.</div>
-                    <div class="loot-feature">🛡️ &nbsp;<strong>Verified Only:</strong> 100% real drops, zero spam.</div>
-                    <div class="loot-feature">💰 &nbsp;<strong>Hidden Coupons:</strong> Secret Amazon/Flipkart codes.</div>
+                    <div class="loot-feature">✅ &nbsp;<strong>Instant Price Drop Alerts</strong></div>
+                    <div class="loot-feature">✅ &nbsp;<strong>Verified Hidden Coupons</strong></div>
+                    <div class="loot-feature">✅ &nbsp;<strong>Flipkart/Amazon Error Deals</strong></div>
                 </div>
 
-                <div class="loot-timer-container">
-                    <span style="color: #ef4444; font-weight: 800; display: block; margin-bottom: 10px;">NEXT LOOT DROPPING IN:</span>
-                    <div class="loot-timer-display" id="timer">24:59</div>
+                <div class="timer-box">
+                    <div style="font-size: 12px; color: var(--accent); margin-bottom: 5px; font-weight: 800;">NEXT DEAL EXPIRES IN:</div>
+                    <div id="timer">24:59</div>
                 </div>
 
-                <a href="https://t.me/lootalert2026" class="loot-cta-button">JOIN TELEGRAM NOW</a>
-                <p style="color: #94a3b8; margin-top: 20px;">Join 50,000+ smart shoppers in India!</p>
+                <a href="https://t.me/lootalert2026" class="loot-cta-button">Join Telegram Now</a>
+                <p style="color: #94a3b8; margin-top: 15px; font-size: 13px;">Join 50,000+ shoppers in India</p>
             </div>
 
             <div class="loot-footer">
-                <p>*₹1 price illustrative. Affiliate Disclosure: As an Amazon Associate, I earn from qualifying purchases.</p>
-                <p>© 2026 LootAlert2026 • India's Fastest Deal Network</p>
+                <p>*₹1 price illustrative of typical errors. We are an Amazon Associate. Deals expire fast.</p>
+                <p>&copy; 2026 LootAlert2026 • India's Fastest Deal Network</p>
             </div>
         </div>
     </div>
 
     <script>
+        // 1. Countdown Timer
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
             setInterval(function () {
@@ -207,10 +248,37 @@
                 if (--timer < 0) { timer = duration; }
             }, 1000);
         }
+
+        // 2. Fake Visitor Counter (increases slightly over time)
+        function updateViewers() {
+            let viewers = Math.floor(Math.random() * (160 - 120 + 1) + 120);
+            document.getElementById('viewers').textContent = viewers;
+        }
+
+        // 3. Social Proof Toasts
+        const names = ["Rahul", "Anjali", "Suresh", "Priya", "Amit", "Vikram", "Sneha"];
+        const cities = ["Mumbai", "Delhi", "Bangalore", "Pune", "Kolkata", "Gorakhpur"];
+        
+        function showToast() {
+            const toast = document.getElementById('toast');
+            const text = document.getElementById('toast-text');
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            
+            text.innerHTML = `<b>${randomName}</b> from ${randomCity} just joined!`;
+            toast.classList.add('toast-active');
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-active');
+            }, 4000);
+        }
+
         window.onload = function () {
-            var duration = 60 * 24 + 59;
-            var display = document.querySelector('#timer');
-            startTimer(duration, display);
+            startTimer(1499, document.querySelector('#timer'));
+            updateViewers();
+            setInterval(updateViewers, 5000);
+            setTimeout(showToast, 3000);
+            setInterval(showToast, 12000);
         };
     </script>
 </body>
